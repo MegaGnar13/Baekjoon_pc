@@ -16,5 +16,4 @@ def solution(array, commands):
         answer_list.append(answer)
 
 
-    return print(answer_list)
-solution([1, 5, 2, 6, 3, 7, 4],[[2, 5, 3], [4, 4, 1], [1, 7, 3]])
+    return answer_list
