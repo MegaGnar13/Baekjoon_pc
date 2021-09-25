@@ -1,20 +1,13 @@
-def solution(array, commands):
-    answer_list = []
+import sys
+A = int(sys.stdin.readline())
+graph_list = []
+for i in range(A):
+    B=list(map(int,sys.stdin.readline().split()))
 
-    for i in commands:
+    B.reverse()
+    graph_list.append(B)
 
-        start=i[0]
-        end=i[1]
-        what=i[2]
-        if len(array)<end:
-            return
-
-        new_array=array[start-1:end]
-        new_array.sort()
-        answer=new_array[what-1]
-
-        answer_list.append(answer)
-
-
-    return print(answer_list)
-solution([1, 5, 2, 6, 3, 7, 4],[[2, 5, 3], [4, 4, 1], [1, 7, 3]])
+graph_list.sort()
+for i in range(len(graph_list)):
+    a=graph_list[i]
+    print(a[1],a[0])
