@@ -4,7 +4,6 @@ def solution(clothes):
     answer=[]
     for i in clothes:
         answer.append(i[1])
-
     a=collections.Counter(answer)
     b=list(a.values())
     count=1
@@ -14,7 +13,7 @@ def solution(clothes):
 solution([["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]])
 
 
-
+# 조합을 0부터 n개까지 만듬 -> 각 아이템마다 +1곱한거를 마지막에 -1하면 됨
 # def solution(clothes):
 #     answer = {}
 #     for i in clothes:
@@ -29,7 +28,9 @@ solution([["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turb
 #         count*=i[1]+1
 #     return count-1
 # solution([["yellowhat", "headgear"], ["bluesunglasses", "eyewear"], ["green_turban", "headgear"]])
-# 조합을 0부터 n개까지 만듬 -> 각 아이템마다 +1곱한거를 마지막에 -1하면 됨
+
+
+# itertools의 combination 이용하여 1개 뽑을 때부터 n개 뽑을 때까지 각각 구해서 더해줌 -> 시간초과
 # import itertools
 # def solution(clothes):
 #     answer = {}
