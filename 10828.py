@@ -1,7 +1,8 @@
-A=int(input())
+import sys
+A=int(sys.stdin.readline())
 stack_list=[]
 for B in range(A):
-    i=list(input().split())
+    i=list(sys.stdin.readline().split())
     if i[0]=='push':
         stack_list.append(i[1])
     elif i[0] == 'top':

@@ -1,6 +1,3 @@
-while True:
-    try:
-        a=input()
-        print(a)
-    except:
-        break
+a=4
+a*=2
+print(a)

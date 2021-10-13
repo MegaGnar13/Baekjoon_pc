@@ -1,23 +1,16 @@
-A, B = map(int,input().split())
+n, m = list(map(int, input().split()))
+s = []
 
-visited = [False]*A
-out=[]
-
-def NM(depth,A,B):
-    if depth == B:
-        print(' '.join(map(str,out)))
-        return
-    for i in range(len(visited)):
-        if visited[i] == True:
-            continue
-        else:
-            visited[i]=True
-            out.append(i+1)
-            NM(depth+1,A,B)
-            visited[i]=False
-            out.pop()
+def dfs(start):
+    if len(s) == m:
+        print(' '.join(map(str, s)))
 
 
+    for i in range(start, n + 1):
+        if i not in s:
+            s.append(i)
+            dfs(i+1)
+            s.pop()
 
 
-NM(0,A,B)
+dfs(1)

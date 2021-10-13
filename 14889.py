@@ -25,17 +25,14 @@ for i in result:
         for BB in range(A//2):
             if AA!=BB:
                 score_BB+=list_A[clone[AA]][clone[BB]]
+    #노가다의 흔적.. 처음에 3명으로 생각했을 때 짠 것
     # score_A=list_A[i[0]][i[1]]+list_A[i[1]][i[0]]+list_A[i[0]][i[2]]+list_A[i[2]][i[0]]+list_A[i[1]][i[2]]+list_A[i[2]][i[1]]
     # score_B=list_A[clone[0]][clone[1]]+list_A[clone[1]][clone[0]]+list_A[clone[0]][clone[2]]+list_A[clone[2]][clone[0]]+list_A[clone[1]][clone[2]]+list_A[clone[2]][clone[1]]
     score=score_AA-score_BB
-    score_list.append(score)
+    if score>=0:
+        score_list.append(score)
 
-answer = []
-
-for i in score_list:
-    if i>=0:
-        answer.append(i)
-print(min(answer))
+print(min(score_list))
 
 # 처음에 무조건 2명씩 팀 짜는건줄 ㅠㅠ
 # import itertools
