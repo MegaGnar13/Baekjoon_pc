@@ -15,6 +15,11 @@ for i in D:
         answer.append(0)
 
 print(*answer)
+#시간초과
+# A = stdin.readline()
+# B = sorted(map(int,stdin.readline().split()))
+# C = stdin.readline()
+# D = map(int,stdin.readline().split())
 # end_point=len(B)
 # # print(B)
 # answer=[]
