@@ -12,9 +12,10 @@ for i in range(1,node+1):
     next_node[i]=connect
 
 def DFS(next_node,startpoint):
+
     stack=[]
     answer=[]
-    stack.append(start_point)
+    stack.append(startpoint)
     while stack:
         n=stack.pop()
         if n not in answer:
@@ -27,7 +28,7 @@ DFS(next_node,start_point)
 def BFS(next_node,startpoint):
     queue=[]
     answer=[]
-    queue.append(start_point)
+    queue.append(startpoint)
     while queue:
         n=queue.pop(0)
         if n not in answer:
