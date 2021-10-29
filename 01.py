@@ -1,24 +1,24 @@
-def solution(genres, plays):
-    answer = {}
-    for i in range(len(plays)):
-        if genres[i] in answer:
-            answer[genres[i]].append([i, plays[i]])
-        else:
-            answer[genres[i]] = [[i, plays[i]]]
-
-    music = list(answer.items())
-    for i in range(len(music)):
-        music[i] = list(music[i])
-
-    for i in range(len(music)):
-        coco = 0
-        for j in range(len(music[i][1])):
-            coco += music[i][1][j][1]
-        music[i].append(coco)
-    print(music[1][2])
-
-    music.sort(key=lambda x: -x[2])
-    print(music)
-
-    return answer
-solution(["classic", "pop", "classic", "classic", "pop"],[500, 600, 150, 800, 2500])
+import sys
+A,B,C = map(int,sys.stdin.readline().split())
+mark=[list(map(int,sys.stdin.readline().split())) for i in range(A)]
+set_mark=set()
+for i in mark:
+    set_mark.update(i)
+answer=[]
+for height in set_mark:
+    num=0
+    block=C
+    for x in range(A):
+        for y in range(B):
+            if mark[x][y]>height:
+                num+=(mark[x][y]-height)*2
+                block-=1
+            elif mark[x][y]<height:
+                num+=(height-mark[x][y])
+                block-=1
+            else:
+                continue
+    if block>=0:
+        answer.append([num,height])
+answer.sort(key=lambda x:(x[0],x[1]))
+print(*answer[0])
