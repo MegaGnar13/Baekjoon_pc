@@ -1,3 +1,4 @@
+#다시 처음부터
 x,y = map(int,input().split()) #x=세로 y=가로
 map=[list(map(int,input())) for i in range(x)]
 s=[]
