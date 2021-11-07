@@ -1,4 +1,4 @@
-#dfs
+#dfs and bfs
 node,edge,start_point = map(int,input().split())
 edge_list=[list(map(int,input().split())) for j in range(edge)]
 next_node=dict()
