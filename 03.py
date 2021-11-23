@@ -1,19 +1,17 @@
-from datetime import datetime
+def seq(arr,tar):
+    tar1=0
+    tar2=1
+    now=arr[tar1]+arr[tar2]
+    while now!=tar:
+        if now<tar:
+            tar1+=1
+            tar2+=1
+            now = arr[tar1] + arr[tar2]
+        else:
+            tar1-=1
+            now = arr[tar1] + arr[tar2]
 
-start="05/04 MON"
-what="06/12"
-print(start[-3:])
-start=start[:-4]
-start=start.split("/")
-what=what.split("/")
-start=''.join(start)
-what=''.join(what)
-# print(start,what)
 
-now=datetime.strptime(what,"%m%d")
+    return [tar1,tar2]
 
-date_to_compare=datetime.strptime(start,"%m%d")
-
-date_diff=now-date_to_compare
-print(date_diff.days)
-
+print(seq([1,4,7,15,37,42],22))
