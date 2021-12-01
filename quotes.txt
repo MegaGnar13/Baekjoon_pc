@@ -1,0 +1,6 @@
+First, solve the problem. Then, write the code. - John Johnson
+Without requirements or design, programming is the art of adding bugs to an empty text file. -
+Louis Srygley
+Computers are good at following instructions, but not at reading your mind. - Donald Knuth
+Always code as if the guy who ends up maintaining your code will be a violent psychopath who
+knows where you live. - John Woods
