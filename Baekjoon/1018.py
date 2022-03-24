@@ -34,3 +34,41 @@ for new in new_chess_pan:
 
 print(min(count_list))
 
+"""
+처음부터 판을 옮기는게 아니라 일정 범위를 나누어서 바로 확인
+"""
+
+y, x = map(int, input().split())
+
+chess = []
+for _ in range(y):
+    a = input()
+    chess.append(a)
+
+#처음이 W일 때
+cntt = []
+for n in range(y-7):
+    for m in range(x - 7):
+        cnt_W = 0
+        for i in range(n,8+n):
+            for j in range(m,m+8):
+                if (i+j)%2 == 0 and chess[i][j]=='B':
+                    cnt_W += 1
+                elif (i+j)%2 == 1 and chess[i][j] == 'W':
+                    cnt_W += 1
+        cntt.append(cnt_W)
+
+#처음이 B일 때
+for n in range(y - 7):
+    for m in range(x - 7):
+        cnt_B = 0
+        for i in range(n, 8 + n):
+            for j in range(m, m + 8):
+                if (i + j) % 2 == 0 and chess[i][j] == 'W':
+                    cnt_B += 1
+                elif (i + j) % 2 == 1 and chess[i][j] == 'B':
+                    cnt_B += 1
+        cntt.append(cnt_B)
+
+
+print(min(cntt))
