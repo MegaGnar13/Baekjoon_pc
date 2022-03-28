@@ -1,46 +1,45 @@
-#다시 처음부터
-x,y = map(int,input().split()) #x=세로 y=가로
-map=[list(map(int,input())) for i in range(x)]
-s=[]
-for i in map:
-    s.append(map.copy())
-def fast():
-    dx=[0,0,1,-1]
-    dy=[1,-1,0,0]
-    lenx=len(map)
-    leny=len(map[0])
+from collections import deque
+import sys
+y, x =map(int,sys.stdin.readline().split())
 
-    queue=[[0,0,1]]
-    map[0][0]=11
-    s[0][0]==11
+m=[]
+for _ in range(y):
+   m.append(list(map(int,list(sys.stdin.readline().rstrip()))))
+
+nm = [[[] for _ in range(x)] for i in range(y)]
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+def bfs():
+    queue=deque([[0,0,1,0]])
+    m[0][0] = 1
     while queue:
-        next=queue.pop(0)
+        # print(queue)
+        a=queue.popleft()
 
-        for i in range(4):
-            nx=dx[i]+next[0]
-            ny=dy[i]+next[1]
+        if a[0] == y-1 and a[1] == x-1:
+            return a[3]+1
 
 
-            if nx<0 or ny<0 or nx>=lenx or ny>=leny:
-                continue
+        for _ in range(4):
+            nx = a[1]+dx[_]
+            ny = a[0]+dy[_]
 
-            if map[nx][ny]==0:
-                s[nx][ny]=s[next[0]][next[1]]+1
-                queue.append([nx,ny,next[2]])
+            if 0<=nx<=x-1 and 0<=ny<=y-1 and a[2] not in nm[ny][nx]:
+                if m[ny][nx] == 0:
+                    queue.append([ny, nx, a[2], a[3]+1])
 
-            # if len(queue)==0 and onecount==1:
-            if next[2]==1 and map[nx][ny]==1:
-                nx+=dx[i]
-                ny+=dy[i]
-                if nx < 0 or ny < 0 or nx >= lenx or ny >= leny:
-                    continue
-                if map[nx][ny] == 0:
-                    s[nx][ny] = s[next[0]][next[1]] + 2
-                    queue.append([nx, ny,0])
+                    nm[ny][nx].append(a[2])
+                else:
+                    if a[2] == 0:
+                        continue
+                    else:
+                        queue.append([ny, nx, 0, a[3]+1])
+                        nm[ny][nx].append(a[2])
 
-fast()
-print(map)
-if map[len(map)-1][len(map[0])-1]==0:
-    print(-1)
+
+a = bfs()
+if a:
+    print(a)
 else:
-    print(map[len(map)-1][len(map[0])-1]-10)
+    print(-1)
