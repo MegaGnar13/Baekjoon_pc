@@ -1,25 +1,29 @@
-a =int(input())
-count_num = 0
-answer = 0
+n = int(input())
 
-chess = [[0 for i in range(a)] for j in range(a)]
+queen = [0 for i in range(n)]
 
-def Queen(where): #where = [i,j]
-    global chess_pan
+dfs = []
+ans = 0
+def queens(m):
+    # print(dfs)
+    global ans
+    if len(dfs) == n:
+        ans += 1
+        return
 
-    if count_num == A:
-        return answer+1
+    for i in range(n):
 
-    chess_pan[where[1]]=[1]*A
-    for i in range(A):
-        chess_pan[i][where[0]]=1
+        err = 0
+        for k in dfs:
 
+            if k[1] == i or abs(m-k[0]) == abs(i-k[1]):
+                err+=1
+                break
+        if err == 0:
+            dfs.append([m,i])
 
-for i in range(a):
-    for j in range(a):
-        if chess[i][j] == 0:
-            chess[i][j] = 1
-            Queen()
+            queens(m+1)
+            dfs.pop()
 
-        Queen([i,j])
-print(answer)
+queens(0)
+print(ans)
