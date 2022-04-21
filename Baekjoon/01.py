@@ -1,35 +1,82 @@
-def prime_list(n):
-    # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
-    sieve = [True] * n
+import sys
+n = int(input())
+pe = list(map(int,sys.stdin.readline().split()))
+con = list(map(int,sys.stdin.readline().split()))
 
-    # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
-    m = int(n ** 0.5)
-    for i in range(2, m + 1):
-        if sieve[i] == True:           # i가 소수인 경우
-            for j in range(i+i, n, i): # i이후 i의 배수들을 False 판정
-                sieve[j] = False
+b=sum(con)
+cc = []
+for i in range(len(con)):
+    nxt = [i] * con[i]
+    cc.extend(nxt)
 
-    # 소수 목록 산출
-    return [i for i in range(2, n) if sieve[i] == True]
-
-print(prime_list(16))
+# print(cc)
 
 
-def bertrang(num):
-    pr = prime_list(2*123456)
-    sec = 2*num+1
-    ans = []
-    for i in pr:
-        if i<sec and i>=num:
-            ans.append(i)
+ans = []
+tar = []
+for i, j in enumerate(cc):
+    tar.append([i,j])
+# print(tar)
+us = []
+
+def nm(a, b):
+    if len(us) == b:
+        cmd = []
+        for k in us:
+            cmd.append(k[1])
+        # if cmd not in ans:
+        cmd= tuple(cmd)
+        ans.append(cmd)
+        return
+    for i in range(len(tar)):
+        if tar[i] in us:
+            continue
+        us.append(tar[i])
+        nm(i,b)
+        us.pop()
+nm(0,b)
+
+# print(set(ans))
+ans = set(ans)
+# print(len(ans))
+
+ans_M = 0
+ans_m = 1000000000000
 
 
-    return len(ans)
+for i in ans:
+    tar = 0
+    for j in range(len(i)):
+        if j == 0:
+            if i[j] == 0:
+                tar = pe[j] + pe[j+1]
+            elif i[j] == 1:
+                tar = pe[j] - pe[j+1]
+            elif i[j] == 2:
+                tar = pe[j] * pe[j+1]
+            elif i[j] == 3:
+                if pe[j] < 0:
+                    tar = -(-pe[j]//pe[j+1])
+                else:
+                    tar = pe[j]//pe[j+1]
+        else:
+            if i[j] == 0:
+                tar += pe[j+1]
+            elif i[j] == 1:
+                tar -= pe[j+1]
+            elif i[j] == 2:
+                tar *= pe[j+1]
+            elif i[j] == 3:
+                if tar < 0:
+                    tar = -(-tar//pe[j+1])
+                else:
+                    tar = tar//pe[j+1]
 
-while True:
-    a = int(input())
-    if a == 0:
-        break
-    else:
-        print(bertrang(a))
+    if tar < ans_m:
+        ans_m = tar
+    if tar > ans_M:
+        ans_M = tar
+print(ans_M)
+print(ans_m)
+
 
