@@ -12,19 +12,27 @@ for i in range(m):
     node[a].append(b)
     node[b].append(a)
 
-stack = deque([[start,1]])
+stack = deque([start])
+
+
+for k in node:
+    node[k].sort(reverse=True)
 
 
 check = [0 for i in range(n+1)]
+ss = 0
 
 while stack:
+
     tar = stack.pop()
 
-    if check[tar[0]] == 0:
-        check[tar[0]] = tar[1]
+    if check[tar] == 0:
+        ss+=1
+        check[tar] = ss
 
-        for i in node[tar[0]]:
-            stack.append([i,tar[1]+1])
+        for i in node[tar]:
+            if check[i] == 0:
+                stack.append(i)
 
 # print(check)
 
