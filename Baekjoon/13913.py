@@ -1,3 +1,4 @@
+#dfs - 도착점까지 최소시간, 경로 출력, 도착점이 작은 경우는 해답이 optimal
 from collections import deque
 m = [0 for i in range(100001)]
 ti = [0 for j in range(100001)]
