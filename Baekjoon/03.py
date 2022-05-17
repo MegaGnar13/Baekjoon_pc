@@ -1,8 +1,19 @@
-a= [[1,2,3],[4,5,6],[7,8,9]]
+import sys
 
-b = a[1:2][1:3]
+n, m = map(int, sys.stdin.readline().split())
 
-c=[a[1][1:3],a[2][1:3]]
+lab = []
 
-print(b)
-print(c)
+for i in range(n):
+    li = list(map(int, sys.stdin.readline().split()))
+    lab.append(li)
+ans = []
+
+for i in range(n):
+    for j in range(m):
+        if lab[i][j] == 0:
+
+
+def zeropadding
+
+def dfs():
