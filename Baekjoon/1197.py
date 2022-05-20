@@ -31,12 +31,19 @@ ans = 0
 # print(weight)
 
 for tar, n1, n2 in weight:
-
+    # print(check,'before find', tar)
     if find(check, n1) != find(check, n2):
+        # print(check,'after find')
         ans += tar
-        union(check, n1, n2)
+        if check[n1] < check[n2]:           # 중요 !!! 최고 조상의 조상을 바꿔야한다!
+            check[check[n2]]= check[n1]
+        else:
+            check[check[n1]] = check[n2]
+
+        # union(check, n1, n2)
 
 
+    # print(check,'end',n1,n2)
     # print(check,tar)
 
 # print(check)
