@@ -1,19 +1,34 @@
-import sys
+n, c = map(int, input().split())
 
-n, m = map(int, sys.stdin.readline().split())
-
-lab = []
-
+array = []
 for i in range(n):
-    li = list(map(int, sys.stdin.readline().split()))
-    lab.append(li)
-ans = []
+    array.append(int(input()))
 
-for i in range(n):
-    for j in range(m):
-        if lab[i][j] == 0:
+array.sort()
 
 
-def zeropadding
+def binary_search(array, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        current = array[0]
+        count = 1
 
-def dfs():
+        for i in range(1, len(array)):
+            if array[i] >= current + mid:
+                count += 1
+                current = array[i]
+
+        if count >= c:
+            global answer
+            start = mid + 1
+            answer = mid
+        else:
+            end = mid - 1
+
+
+start = 1
+end = array[-1] - array[0]
+answer = 0
+
+binary_search(array, start, end)
+print(answer)
