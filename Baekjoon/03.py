@@ -1,5 +1,14 @@
-import sys
+import heapq
+a = []
 
-n, time = map(int, sys.stdin.readline().split())
+heapq.heappush(a, 4)
+heapq.heappush(a, 3)
+heapq.heappush(a, 2)
+heapq.heappush(a, 1)
 
-for _ in range(n):
+a.sort(reverse=True)
+
+ans = heapq.heappop(a)
+print(ans)
+
+print(a)
