@@ -57,17 +57,19 @@ for i in range(len(check)):
     if len(temp) == computer - 1:
         break
 
-if len(temp) < computer-1:
-    print(-1)
-else:
-    print(ans-tar)
-
-# err = 0
-# for i in range(1, computer):
-#     if parent[i] != parent[i+1]:
-#         err += 1
-#         break
-# if err == 0:
-#     print(ans - tar)
-# else:
+# if len(temp) < computer-1:
 #     print(-1)
+# else:
+#     print(ans-tar)
+
+for i in range(1, len(parent)):
+    parent[i] = find(parent[i])
+err = 0
+for i in range(1, computer):
+    if parent[i] != parent[i+1]:
+        err += 1
+        break
+if err == 0:
+    print(ans - tar)
+else:
+    print(-1)
