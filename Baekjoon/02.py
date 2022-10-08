@@ -1,28 +1,21 @@
-import heapq
-N, M = map(int, input().split())
+n, m = map(int, input().split())
+li = list(map(int, input().split()))
 
-l = list(map(int, input().split()))
+prefix = 0
+
+tmp = [0 for i in range(m)]
+
+for i in range(n):
+    prefix += li[i]
+
+    t = prefix % m
+    tmp[t] += 1
+
+# print(tmp)
 
 ans = 0
-temp = []
-for i in range(len(l)):
-    if l[i] == 10:
-        ans += 1
-    elif l[i] > 10:
-        heapq.heappush(temp, l[i])
-temp.sort(reverse = True)
-
-for _ in range(M):
-
-    if temp:
-        a = heapq.heappop(temp)
-
-        ans += 1
-
-        if a - 10 == 10:
-            ans += 1
-
-        elif a - 10 > 10:
-            heapq.heappush(temp, a-10)
-
+for i in tmp:
+    ans += (i*(i-1))//2
+ans += tmp[0]
+# print(tmp)
 print(ans)
