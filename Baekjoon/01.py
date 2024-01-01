@@ -1,12 +1,23 @@
-target = int(input())
+a, b = map(int, input().split())
+t = int(input())
 
-t= 0
-n = 2
-m = 1
+tmp = b + t
 
-while t < target:
-    n = n + m
-    m = n-1
-    t += 1
+if b + t >= 60:
+    new_h = (b + t) // 60
+    remain = (b + t) % 60
 
-print(n**2)
+else:
+    remain = b + t
+    new_h = 0
+
+next_h = a + new_h
+next_m = remain
+
+if next_h >= 24:
+    last_h = next_h % 24
+else:
+    last_h = next_h
+
+print(last_h, next_m)
+# print(next_m)
